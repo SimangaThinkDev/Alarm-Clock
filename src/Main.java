@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
         
-
+        // This is the formatter we are going to use to validate the user's time...
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "HH:mm:ss" );
         LocalTime alarmTime = null;
         String filePath = "alarm.wav";
-        System.out.print( "Enter an alarm time (HH:MM:SS): " );
+        System.out.print( "Enter an alarm time (HH:MM:SS): " ); // Warning the user to use the correct time format
 
-        do {
+        do { // we want to do something while...
 
             try {
 
@@ -27,15 +27,16 @@ public class Main {
             }
             catch ( DateTimeParseException e ) {
                 System.out.print( "Invalid Time, Time should be in format (HH:MM:SS): " );
+                // Immediately prompts the user for correct time
             }
         }
         while ( alarmTime == null);
 
         AlarmClock alarmClock = new AlarmClock( alarmTime, filePath );
+        // Start the thread with the AlarmClock object
         Thread alarmThread = new Thread( alarmClock );
 
         alarmThread.start();
-
         
     }
 
