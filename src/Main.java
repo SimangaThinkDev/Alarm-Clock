@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    static Scanner scanner = new Scanner( System.in );
+    public static Scanner scanner = new Scanner( System.in );
 
     public static void main(String[] args) {
         
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "HH:mm:ss" );
         LocalTime alarmTime = null;
+        String filePath = "alarm.wav";
         System.out.print( "Enter an alarm time (HH:MM:SS): " );
 
         do {
@@ -30,12 +31,12 @@ public class Main {
         }
         while ( alarmTime == null);
 
-        AlarmClock alarmClock = new AlarmClock( alarmTime );
+        AlarmClock alarmClock = new AlarmClock( alarmTime, filePath );
         Thread alarmThread = new Thread( alarmClock );
 
         alarmThread.start();
 
-        scanner.close();
+        
     }
 
 }
