@@ -30,6 +30,11 @@ public class Main {
         }
         while ( alarmTime == null);
 
+        AlarmClock alarmClock = new AlarmClock( alarmTime );
+        Thread alarmThread = new Thread( alarmClock );
+
+        alarmThread.start();
+
         scanner.close();
     }
 
